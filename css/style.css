@@ -1,0 +1,63 @@
+@import "compass/css3";
+
+html {font-size:16px;}
+
+body { font-family:"Helvetica Neue", Helvetica, sans-serif; margin:0; text-align:center; }
+
+h1 { line-height:100px; margin:0; }
+
+
+.my-bg {
+  background:#222;
+  height:100%;
+  max-height:468px;
+  width:100%;
+  clear:both;
+  margin-bottom:200px;
+
+  background:url(https://dl.dropboxusercontent.com/u/24098368/responsive-hero-bg-1.jpg) no-repeat center center;
+  background-size:cover;
+
+  @media (min-width:641px) and (max-width:1024px) {
+    background:url(https://dl.dropboxusercontent.com/u/24098368/responsive-hero-bg-2.jpg) no-repeat center center;
+    background-size:cover;
+  }
+
+  @media (min-width:1025px) and (max-width:1200px) {
+    background:url(https://dl.dropboxusercontent.com/u/24098368/responsive-hero-bg-3.jpg) no-repeat center center;
+    background-size:cover;
+  }
+
+  @media (min-width:1501px){
+    background:url(https://dl.dropboxusercontent.com/u/24098368/responsive-hero-bg-4.jpg) no-repeat center center;
+    background-size:cover;
+  }
+
+
+}
+/*text*/
+.my-content {
+  position: relative;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-box-pack: center;
+  box-pack: center;
+  height: 100%;
+}
+
+h2 {
+  color:#fff;
+  font-size:3em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  margin:0 0 20px;
+  opacity: 0.5;
+}
+

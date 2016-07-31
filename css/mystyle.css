@@ -1,0 +1,81 @@
+/* Wrapper for page content to push down footer */
+html,
+body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+#footer {
+  height: auto;
+  background-color: #85144b;
+  border:1px solid;
+}
+
+.boxcolor{
+background-color:#85144b;
+margin-left: 10px;
+padding-left:20%;
+margin-top:10px;
+margin-top:30px;
+}
+/*find trainer banner*/
+.banner-color{
+background-color:#85144b;
+text-align: center;
+margin-top:20px;
+height:120px;
+
+}
+/*button*/
+.btn-space{
+    margin-top:20px;
+}
+
+/*box*/
+.box-background{
+border-color:#EEEEEE;
+background-color:white;
+border:2px solid;
+margin-left:30px;
+margin-top:30px;
+border-color:#EAEAEA;
+padding-top: 30px;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(204,204,204,1);
+-moz-box-shadow: 10px 10px 5px 0px rgba(204,204,204,1);
+box-shadow: 10px 10px 5px 0px rgba(204,204,204,1);
+margin-bottom: 20px;
+}
+.box-background:hover{
+-webkit-box-shadow: 10px 10px 5px 0px rgba(204,204,204,1);
+-moz-box-shadow: 10px 10px 5px 0px rgba(204,204,204,1);
+box-shadow: 10px 10px 5px 0px rgba(204,204,204,1);
+}
+/*text*/
+.text-white{
+  color:white;
+}
+.text-grey{
+color:#666666;
+font-size:10px;
+}
+h3 {
+  color:white;
+}
+.crumb{
+margin-left:10%;
+}
+.img-space{
+margin-bottom: 20px;
+margin-right:20px;
+
+}
+.navcolor{
+    background-color:white;
+    border:none;
+}

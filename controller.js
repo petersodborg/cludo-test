@@ -1,28 +1,34 @@
-angular.module('myModule', ['angular-advanced-searchbox'])
+angular
+  .module("myApp", [])
+  .controller('mainController', function ($scope, $http) {
+    $scope.getMovies = function () {
+      if ($scope.keyword === '' || $scope.keyword === undefined) {
+        $scope.emptyText = 'Type something to search.';
+        return;
+      }
 
+      $http
+        .post('movies.json')
+        .error(function (data, status) {
+          $scope.errorText = 'ERROR: Cannot fetch movies.';
+        })
+        .success(function (data, status) {
+          var movies = [];
 
-  .controller('mainController', ['$scope', function($scope) {
-        $scope.sortType     = 'movieType'; // set the default sort type
-        $scope.sortReverse  = false;  // set the default sort order
-        $scope.searchMovie   = '';     // set the default search/filter term
+          data.forEach(function(movie) {
+            // Search keyword at any place in movie title.
+            if (movie.title.toLowerCase().indexOf($scope.keyword.toLowerCase()) > -1) {
+              movies.push({
+                title: movie.title,
+                movietype: movie.movietype,
+                picture: movie.picture
+              });
+            }
+          });
 
-
-        $scope.selectGenre = [
-          { movieType: "Comedy", name: "Fars fede ferie i las vegas", placeholder: "Comedy" },
-          { movieType: "Thriller", name: "The others", placeholder: "Thriller" },
-          { movieType: "Action", name: "Die hard 3", placeholder: "Action..."},
-          { movieType: "Drama", name: "En verden udenfor", placeholder: "Drama..." }
-        ];
-        $scope.myname = "Cludo search";
-
-$scope.availableSearchParams = [
-  { key: "name", name: "Name", placeholder: "Name..." },
-  { key: "city", name: "City", placeholder: "City...", restrictToSuggestedValues: true, suggestedValues: ['Berlin', 'London', 'Paris'] },
-  { key: "country", name: "Country", placeholder: "Country..." },
-  { key: "emailAddress", name: "E-Mail", placeholder: "E-Mail...", allowMultiple: true },
-  { key: "job", name: "Job", placeholder: "Job..." }
-];
-
-
-
-  }]);
+          if (movies.length) {
+            $scope.movies = movies;
+          }
+        });
+    }
+  });

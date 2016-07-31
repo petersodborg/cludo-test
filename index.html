@@ -1,97 +1,82 @@
-<html ng-app="myModule">
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="mainController">
 <head>
-<title>Cludo-test-search</title>
-<!-- META -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="controller.js"></script>
-
-<!-- optional for auto complete / suggested value feature -->
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-
-<!-- angular advanced searchbox includes -->
-<link rel="stylesheet" href="bower_components/angular-advanced-searchbox/dist/angular-advanced-searchbox.min.css">
-<script src="bower_components/angular-advanced-searchbox/dist/angular-advanced-searchbox-tpls.min.js"></script>
-
-<!--css-->
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
-
-
+    <!-- CSS (load bootstrap) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="controller.js"></script>
+     <link rel="stylesheet" href="./css/mystyle.css">
 </head>
-
+<!-- apply our angular app to our site -->
 <body ng-controller="mainController">
-<div class="container myclass">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="jumbotron">
-        <h1 align="center">
-          {{myname}}
-        </h1>
-  <div class="alert alert-info">
-    <p>Sort Type: {{ sortType }}</p>
-    <p>Sort Reverse: {{ sortReverse }}</p>
-    <p>Search Query: {{ searchGenre }}</p>
-  </div>
+<div id="wrap">
+<!-- NAVIGATION -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+             <span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button> <a class="navbar-brand" href="#">Homepage</a>
+        </div>
 
-  <form>
-  <h3>Ordinary search:</h3>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-search"></i></div>
-        <input type="text" class="form-control" placeholder="Search genre" ng-model="searchMovie">
-      </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#">Link</a>
+            </li>
+            <li>
+              <a href="#">Link</a>
+            </li>
+        </div>
+      </nav>
+<div class="row"><!--start main row-->
+<div class="col-md-12"><!--main column-->
+<div class="row"><!--row 1 container-->
+<div class="jumbotron banner-color">
+<p class="text-white">Cludo test - Movie search</p>
+</div>
+<div class="col-md-8" style="margin-left:10px"><!--column left-->
+               <div class="row" style="margin-left:50px"><!--row left-->
+                          <div class="col-xs-10 box-background" ng-repeat="movie in movies"><!--column 1 left-->
+                            <div class="col-md-4 img-space">
+                         <img class="img-rounded" alt="Bootstrap Image Preview" src="{{movie.picture}}"/></div>
+                         <div class="col-md-4">
+                               <h4>
+                                {{movie.title}}
+                            </h4>
+                            <p class="text-grey">
+                                {{movie.movietype}}
+                            </p>
+                            </div>
+                        </div><!--end column 1 left-->
+                    </div><!--end row left-->
+                </div><!--end column left-->
+<div class="col-md-3 pul"><!--column right-->
+ <div class="jumbotron boxcolor">
+ <form role="search">
+   <div class="form-group">
+<div class="col-xs-16 pull-left">
+    <input type="search" class="form-control" ng-model="keyword" placeholder="Search letter f.eks a" required>
+    </div>
+    <input type="submit" value="Search" ng-click="getMovies();" class="btn btn-primary btn-space">
     </div>
   </form>
-
-<h3>Advanced search:</h3>
-<nit-advanced-searchbox ng-model="searchParams" parameters="availableSearchParams" placeholder="Search..."></nit-advanced-searchbox>
-  <table class="table table-bordered table-striped">
-
-    <thead>
-      <tr>
-        <td>
-          <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
-            Genre type:
-            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
-          </a>
-        </td>
-        <td>
-          <a href="#" ng-click="sortType = 'movieType'; sortReverse = !sortReverse">
-          Movie type:
-            <span ng-show="sortType == 'movieType' && !sortReverse" class="fa fa-caret-down"></span>
-            <span ng-show="sortType == 'movieType' && sortReverse" class="fa fa-caret-up"></span>
-          </a>
-        </td>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr ng-repeat="genre in selectGenre | orderBy:sortType:sortReverse | filter:searchMovie">
-        <td>{{ genre.name }}</td>
-        <td>{{ genre.movieType }}</td>
-      </tr>
-    </tbody>
-
-  </table>
-
-
-
-  <div class="my-bg">
-  <div class="my-content">
-    <h2>Some banner content!</h2>
-  </div>
-</div>
-      </div>
     </div>
-  </div>
-</div>
+          </div><!--end column right-->
+          </div><!--end row 1 container-->
+          </div><!--end main column-->
+    </div><!--end main row-->
+</div><!--end container-->
+      <div id="footer">
+        <div class="jumbotron banner-color">
 
+        </div>
+      </div>
 </body>
 </html>
+
+
+
+
+

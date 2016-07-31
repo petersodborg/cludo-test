@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Fars fede ferie i las vegas",
+    "movietype": "Comedy",
+    "picture": "images/farsfedeferie.jpg"
+  },
+  {
+    "title": "Die hard 3",
+    "movietype": "Action",
+    "picture": "images/diehard.jpg"
+  },
+  {
+    "title": "The others",
+    "movietype": "Thriller",
+    "picture": "images/theothers.jpg"
+  },
+  {
+    "title": "En verden udenfor",
+    "movietype": "Drama",
+    "picture": "images/enverdenudenfor.jpg"
+  },
+  {
+    "title": "Basic instinct",
+    "movietype": "Thriller",
+    "picture": "images/basicinstinct.jpg"
+  }
+]
